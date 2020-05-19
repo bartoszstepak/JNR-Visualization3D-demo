@@ -17,8 +17,26 @@ cors =  CORS(app, resources={
 
 @app.route('/', methods=['GET'])
 def get_points():
-    points = Points()
-    generated_points = points.get_joint_numerical_range(10000);
+    matrix = [
+        [
+            [0, 1],
+            [1, 0]
+        ],
+        [
+            [0, complex(0, -1)],
+            [complex(0, 1), 0]
+        ],
+        [
+            [1, 0],
+            [0, -1]
+        ]
+    ]
+
+    points = Points(matrix, 2)
+    generated_points = points.get_joint_numerical_range(500)
+
+    # points = Points()
+    # generated_points = points.get_joint_numerical_range(1500)
     return Response(dumps(generated_points), mimetype='text/json')
 
 
