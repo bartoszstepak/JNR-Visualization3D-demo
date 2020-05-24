@@ -1,6 +1,8 @@
+import scipy.linalg as la
 from math import *
 import numpy as np
 import helper
+import random
 
 
 class Points:
@@ -57,15 +59,11 @@ class Points:
 
 
     def get_max_eig_vector_of_matrix(self, matrix):
+        eigenvalues, eigenvectors = la.eig(matrix)
+        max_eig_value = eigenvalues.max()
+        largest_eigenvector = eigenvectors[:, np.argmax(max_eig_value)]
 
-        eigenvalues, eigenvectors = np.linalg.eigh(matrix)
-
-        max_eigen_value = np.amax(eigenvalues)
-
-        max_eigen_vector_indexes = np.where(eigenvalues == max_eigen_value)
-        index = np.asarray(max_eigen_vector_indexes)
-
-        return  eigenvectors[index[0]]
+        return largest_eigenvector
 
 
     def get_predicted_value_of_operator(self, operator, vector):
@@ -94,3 +92,21 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+def get_max_eig_vector_of_matrix(self, matrix):
+    eigenvalues, eigenvectors = la.eig(matrix)
+    max_eig_value = eigenvalues.max()
+    largest_eigenvector = eigenvectors[:, np.argmax(max_eig_value)]
+
+    return largest_eigenvector

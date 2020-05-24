@@ -1,5 +1,6 @@
 from math import *
 import numpy as np
+import random
 
 
 def normalize_real_vector(vector):
@@ -42,10 +43,14 @@ def get_fibonacci_sphere_as_vectors(samples=1):
 
     for i in range(samples):
 
-        y = 1 - (i / float(samples - 1)) * 2
-        theta = phi * i
-        x = cos(theta) * 1
-        z = sin(theta) * 1
+        # y = 1 - (i / float(samples - 1)) * 2
+        # theta = phi * i
+        # x = cos(theta) * 1
+        # z = sin(theta) * 1
+
+        x = random.randrange(-100,100)
+        y = random.randrange(-100,100)
+        z = random.randrange(-100,100)
         vector = (x, y, z)
 
         if len(vector) == 3:

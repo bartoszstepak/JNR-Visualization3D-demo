@@ -3,6 +3,9 @@ from points import Points
 from flask import Flask, Response
 from flask_cors import CORS
 
+import helper
+import qwe
+
 
 app = Flask('server')
 
@@ -33,15 +36,15 @@ def get_points():
     ]
 
     points = Points(matrix, 2)
-    generated_points = points.get_joint_numerical_range(500)
+    generated_points = points.get_joint_numerical_range(1000)
+    qwe.qwe(generated_points)
+    qwe.qwe(helper.get_fibonacci_sphere_as_vectors(500))
 
-    # points = Points()
-    # generated_points = points.get_joint_numerical_range(1500)
     return Response(dumps(generated_points), mimetype='text/json')
 
 
 def main():
-    app.run(port=8800)
+    app.run(port=2323)
 
 
 if __name__ == '__main__':
