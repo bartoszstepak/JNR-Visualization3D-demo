@@ -59,7 +59,7 @@ class Points:
 
 
     def get_max_eig_vector_of_matrix(self, matrix):
-        eigenvalues, eigenvectors = la.eig(matrix)
+        eigenvalues, eigenvectors = la.eigh(matrix)
         max_eig_value = eigenvalues.max()
         largest_eigenvector = eigenvectors[:, np.argmax(max_eig_value)]
 
@@ -87,26 +87,23 @@ class Points:
 
 
 def main():
-    points = Points()
+    matrix = [
+        [
+            [0, 1],
+            [1, 0]
+        ],
+        [
+            [0, complex(0, -1)],
+            [complex(0, 1), 0]
+        ],
+        [
+            [1, 0],
+            [0, -1]
+        ]
+    ]
+
+    points = Points(matrix, 2)
     generated_points = points.get_joint_numerical_range(500)
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-def get_max_eig_vector_of_matrix(self, matrix):
-    eigenvalues, eigenvectors = la.eig(matrix)
-    max_eig_value = eigenvalues.max()
-    largest_eigenvector = eigenvectors[:, np.argmax(max_eig_value)]
-
-    return largest_eigenvector
